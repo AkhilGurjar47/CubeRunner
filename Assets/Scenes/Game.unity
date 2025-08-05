@@ -69818,7 +69818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1293464923}
   TapToStart: {fileID: 1604608158}
-  scoreText: {fileID: 1642005249}
+  bulletText: {fileID: 1642005249}
 --- !u!4 &1345180049
 Transform:
   m_ObjectHideFlags: 0
@@ -85777,7 +85777,7 @@ GameObject:
   - component: {fileID: 1642005252}
   - component: {fileID: 1642005251}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
