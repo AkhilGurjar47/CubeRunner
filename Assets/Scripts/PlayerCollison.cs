@@ -7,6 +7,7 @@ public class PlayerCollison : MonoBehaviour
 {
     public PlayerScript playerScript;
     public Score score;
+    public BulletText bulletText;
     public GameController gameController;
     public AudioSource audioSource;
     public AudioSource audioSouceGameOver;
@@ -14,9 +15,17 @@ public class PlayerCollison : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectables")
         {
-            score.AddScore(1);
-            Destroy(other.gameObject);
-            audioSource.Play();
+            if(other.gameObject.GetComponent<BulletCollectable>() != null)
+            {
+                bulletText.AddBullet();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                score.AddScore(1);
+                Destroy(other.gameObject);
+                audioSource.Play();
+            }
         }
     }
     private void OnCollisionEnter(Collision collision)

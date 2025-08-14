@@ -43,6 +43,6 @@ public class PlayerScript : MonoBehaviour
     private void Shoot()
     {
         GameObject Bullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
-        Bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * 20;
+        Bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * 40;
     }
 }

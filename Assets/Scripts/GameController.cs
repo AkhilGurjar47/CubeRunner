@@ -6,13 +6,14 @@ public class GameController : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject TapToStart;
+    public GameObject scoreText;
     public GameObject bulletText;
     private void Start()
     {
         gameOverPanel.SetActive(false);
         PauseGame();
         TapToStart.SetActive(true);
-        bulletText.SetActive(false);
+        scoreText.SetActive(false);
     }
     private void Update()
     {
@@ -24,11 +25,11 @@ public class GameController : MonoBehaviour
     public void GameOver()
     { 
         gameOverPanel.SetActive(true);
-        bulletText.SetActive(false);
+        scoreText.SetActive(false);
     }
     public void Restart()
     {
-        bulletText.SetActive(false);
+        scoreText.SetActive(false);
         SceneManager.LoadScene("Game");
     }
     public void QuitGame()
@@ -43,6 +44,6 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1f;
         TapToStart.SetActive(false);
-        bulletText.SetActive(true);
+        scoreText.SetActive(true);
     }
 }
