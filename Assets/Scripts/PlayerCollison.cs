@@ -27,6 +27,11 @@ public class PlayerCollison : MonoBehaviour
                 audioSource.Play();
             }
         }
+        if(other.gameObject.tag == "Finish")
+        {
+            Debug.Log("Finish");
+            playerScript.Finish();
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {

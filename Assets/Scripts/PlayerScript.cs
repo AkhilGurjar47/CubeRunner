@@ -19,18 +19,19 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
+        
         Vector3 playerPos = transform.position;
         playerPos.x = Mathf.Clamp(playerPos.x, minX, maxX);
         transform.position = playerPos;
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            endPoint = true;
             transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
         }
+        
         if(Input.GetKeyDown(KeyCode.S) && endPoint)
         {
             Shoot();
@@ -38,11 +39,18 @@ public class PlayerScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigidbody.AddForce(0, 0, force * Time.deltaTime);
+        if (!endPoint)
+        {
+            rigidbody.AddForce(0, 0, force * Time.deltaTime);
+        }
     }
     private void Shoot()
     {
         GameObject Bullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
         Bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * 40;
+    }
+    public void Finish()
+    {
+        endPoint = true;
     }
 }
