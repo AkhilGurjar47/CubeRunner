@@ -47071,6 +47071,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4606697684525662045, guid: 3b4e613122b6ba547923281bf03ac0e4, type: 3}
     - target: {fileID: 8638989106470210803, guid: 48ef721e0bccb9d4dabd0ebf5d8a3a4e, type: 3}
+      propertyPath: bulletText
+      value: 
+      objectReference: {fileID: 1389164455}
+    - target: {fileID: 8638989106470210803, guid: 48ef721e0bccb9d4dabd0ebf5d8a3a4e, type: 3}
       propertyPath: bulletSpawnPoint
       value: 
       objectReference: {fileID: 757971771}

@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject bullet;
     public Transform bulletSpawnPoint;
     public bool endPoint;
+    public BulletText bulletText;
     void Start()
     {
         
@@ -32,8 +33,9 @@ public class PlayerScript : MonoBehaviour
             transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
         }
         
-        if(Input.GetKeyDown(KeyCode.S) && endPoint)
+        if(Input.GetKeyDown(KeyCode.S) && endPoint && bulletText.bullet != 0)
         {
+            bulletText.bullet--;
             Shoot();
         }
     }
