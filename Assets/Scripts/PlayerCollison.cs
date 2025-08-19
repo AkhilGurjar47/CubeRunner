@@ -19,6 +19,7 @@ public class PlayerCollison : MonoBehaviour
             {
                 bulletText.AddBullet();
                 Destroy(other.gameObject);
+                audioSource.Play();
             }
             else
             {
