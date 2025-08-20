@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectables
   - Obstacles
+  - enemy
   layers:
   - Default
   - TransparentFX

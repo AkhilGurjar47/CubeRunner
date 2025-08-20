@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.B))
         {
-            force = 2000f;
+            force = 20000f;
         }
         else
         {
@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
     private void Shoot()
     {
         GameObject Bullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
-        Bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * 40;
+        Bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * 20;
     }
     public void Finish()
     {
