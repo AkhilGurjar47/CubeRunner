@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
         if(playerScript.endPoint)
         {
             Timer += Time.deltaTime;
-            if (Timer > 3)
+            if (Timer > 2)
             {
                 GameObject bullet = Instantiate(enemyBullet, enemyBulletSpawnPoint.position, Quaternion.identity);
                 bullet.GetComponent<Rigidbody>().velocity = -enemyBulletSpawnPoint.forward * 20;

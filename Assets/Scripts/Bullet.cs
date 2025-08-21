@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+        if(collision.gameObject.tag != "Ground")
+            Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()
