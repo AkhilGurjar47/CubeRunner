@@ -14,6 +14,11 @@ public class PlayerScript : MonoBehaviour
     public Transform bulletSpawnPoint;
     public bool endPoint;
     public BulletText bulletText;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 20;
+    }
     void Start()
     {
         
