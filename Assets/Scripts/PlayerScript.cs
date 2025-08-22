@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Instance { get; private set; }
     public new Rigidbody rigidbody;
     public float force = 1000f;
     public float speed = 10f;
@@ -12,12 +13,15 @@ public class PlayerScript : MonoBehaviour
     public float minX=-4.45f;
     public GameObject bullet;
     public Transform bulletSpawnPoint;
-    public bool endPoint;
+    public bool stopLine;
     public BulletText bulletText;
 
     private void Awake()
     {
-        Application.targetFrameRate = 20;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
     void Start()
     {
@@ -45,7 +49,7 @@ public class PlayerScript : MonoBehaviour
         {
             force = 1000f;
         }
-        if (Input.GetKeyDown(KeyCode.S) && endPoint && bulletText.bullet != 0)
+        if (Input.GetKeyDown(KeyCode.S) && stopLine && bulletText.bullet != 0)
         {
             bulletText.bullet--;
             Shoot();
@@ -53,7 +57,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!endPoint)
+        if (!stopLine)
         {
             rigidbody.AddForce(0, 0, force * Time.deltaTime);
         }
@@ -65,6 +69,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void Finish()
     {
-        endPoint = true;
+        stopLine = true;
+    }
+    public void EnemyIsDestroyed()
+    {
+        stopLine = false;
     }
 }

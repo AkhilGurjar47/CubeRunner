@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float life = 3f;
+    private bool enemyIsDestroy;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "enemy")
         {
+            PlayerScript.Instance.EnemyIsDestroyed();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

@@ -19,14 +19,13 @@ public class EnemyScript : MonoBehaviour
     {
         Timer = 3;
     }
-
     // Update is called once per frame
     void Update()
     {
         Vector3 enemyPosition = transform.position;
         enemyPosition.x = Mathf.Clamp(enemyPosition.x,minX,maxX);
         transform.position = enemyPosition; 
-        if(playerScript.endPoint)
+        if(playerScript.stopLine)
         {
             Timer += Time.deltaTime;
             if (Timer > 2)
