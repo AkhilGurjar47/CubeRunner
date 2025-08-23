@@ -15,7 +15,9 @@ public class PlayerScript : MonoBehaviour
     public Transform bulletSpawnPoint;
     public bool stopLine;
     public BulletText bulletText;
-
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
     private void Awake()
     {
         if (Instance == null)
@@ -25,7 +27,8 @@ public class PlayerScript : MonoBehaviour
     }
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     void Update()
     {
@@ -54,6 +57,15 @@ public class PlayerScript : MonoBehaviour
             bulletText.bullet--;
             Shoot();
         }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            TakeDamage(20);
+        }
+    }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
     private void FixedUpdate()
     {
