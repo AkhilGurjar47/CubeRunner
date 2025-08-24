@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    public static EnemyScript Instance {  get; private set; }
+
     public GameObject enemyBullet;
     public Transform enemyBulletSpawnPoint;
     public PlayerScript playerScript;
+    public HealthBar healthBar;
+    public int maxHealth = 100;
+    public int currentHealth;
 
     private float maxX = 4.45f;
     private float minX = -4.45f;
@@ -15,9 +20,19 @@ public class EnemyScript : MonoBehaviour
     private bool leftPositionIsTure;
     private bool rightPositionIsTure;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (Instance == null) 
+        { 
+            Instance = this;
+        }
+    }
     void Start()
     {
         Timer = 3;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     // Update is called once per frame
     void Update()
@@ -51,5 +66,10 @@ public class EnemyScript : MonoBehaviour
                 leftPositionIsTure= false;
             }
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }

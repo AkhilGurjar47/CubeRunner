@@ -14,8 +14,13 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "enemy")
         {
-            Destroy(collision.gameObject);
-            EnemyManager.Instance.EnemyGroupCheck();
+            //Destroy(collision.gameObject);
+            EnemyScript.Instance.TakeDamage(20);
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.tag == "Player")
+        {
+            PlayerScript.Instance.TakeDamage(20);
             Destroy(gameObject);
         }
         if(collision.gameObject.tag != "Ground")
