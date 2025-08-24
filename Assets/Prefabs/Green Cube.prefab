@@ -122,6 +122,8 @@ MonoBehaviour:
   enemyBullet: {fileID: 662204290957287230, guid: 1ac2fe083ef91084eb0bbd5a3c88aed9, type: 3}
   enemyBulletSpawnPoint: {fileID: 5893674234882261692}
   playerScript: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &7208945077560934959
 GameObject:
   m_ObjectHideFlags: 0
