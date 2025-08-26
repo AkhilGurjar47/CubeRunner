@@ -15,6 +15,12 @@ public class PlayerCollison : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectables")
         {
+            Debug.Log("Hit");
+            if(other.gameObject.GetComponent<Coin>() != null)
+            {
+                Destroy(other.gameObject);
+                audioSource.Play();
+            }
             if(other.gameObject.GetComponent<BulletCollectable>() != null)
             {
                 bulletText.AddBullet();
