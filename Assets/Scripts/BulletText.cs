@@ -20,6 +20,6 @@ public class BulletText : MonoBehaviour
     }
     public void AddBullet()
     {
-        bullet++;
+        bullet+=5;
     }
 }

@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     public PlayerScript playerScript;
     public int maxHealth = 100;
     public int currentHealth;
+    public HealthBar healthBar;
 
     private float maxX = 4.45f;
     private float minX = -4.45f;
@@ -25,6 +26,7 @@ public class EnemyScript : MonoBehaviour
     {
         Timer = 3;
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +34,7 @@ public class EnemyScript : MonoBehaviour
         Vector3 enemyPosition = transform.position;
         enemyPosition.x = Mathf.Clamp(enemyPosition.x,minX,maxX);
         transform.position = enemyPosition; 
-        if(playerScript.stopLine)
+        if(PlayerScript.Instance.stopLine)
         {
             Timer += Time.deltaTime;
             if (Timer > 2)
@@ -62,6 +64,10 @@ public class EnemyScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("damage" + damage +"" +currentHealth );
+        healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
