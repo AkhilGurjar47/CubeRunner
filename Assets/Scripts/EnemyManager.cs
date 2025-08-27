@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance {  get; private set; } 
-    public List<Transform> enemyGroupTrasnform = new List<Transform>();
-    public Door door;
+    public List<Transform> enemyGroupTransform = new List<Transform>();
+    public List<int> enemyCount = new List<int>();
+    private int finish;
 
     private void Awake()
     {
@@ -15,15 +16,26 @@ public class EnemyManager : MonoBehaviour
             Instance = this;
         }
     }
+    private void Start()
+    {
+        Debug.Log(enemyGroupTransform.Count);
+        for (int i = 0; i < enemyGroupTransform.Count; i++)
+        {
+            enemyCount.Add(enemyGroupTransform[i].childCount);
+        }
+    }
     public void EnemyGroupCheck()
     {
-        foreach (Transform t in enemyGroupTrasnform)
+        finish++;
+        for(int i = 0; i< enemyCount.Count;i++)
         {
-            Debug.Log(t.childCount);
-            if (t.childCount == 0)
+            if(enemyCount[i] == finish)
             {
-                Debug.Log("Group 1 is Destroyed");
-                door.DoorOpen();
+                finish = 0;
+            }
+            else
+            {
+                break;
             }
         }
     }

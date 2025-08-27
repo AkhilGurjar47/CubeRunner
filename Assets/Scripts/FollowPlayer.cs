@@ -12,8 +12,11 @@ public class FollowPlayer : MonoBehaviour
     }
     void Update()
     {
-        Vector3 cameraPos = transform.position;
-        cameraPos.z = playerTransform.position.z+offSet;
-        transform.position = cameraPos;
+        if (playerTransform != null)
+        {
+            Vector3 cameraPos = transform.position;
+            cameraPos.z = playerTransform.position.z + offSet;
+            transform.position = cameraPos;
+        }
     }
 }

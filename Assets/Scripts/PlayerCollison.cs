@@ -15,7 +15,6 @@ public class PlayerCollison : MonoBehaviour
     {
         if (other.gameObject.tag == "Collectables")
         {
-            Debug.Log("Hit");
             if(other.gameObject.GetComponent<Coin>() != null)
             {
                 Destroy(other.gameObject);
@@ -36,8 +35,8 @@ public class PlayerCollison : MonoBehaviour
         }
         if(other.gameObject.tag == "Finish")
         {
-            Debug.Log("Finish");
             playerScript.Finish();
+            Destroy(other.gameObject);
         }
     }
     private void OnCollisionEnter(Collision collision)

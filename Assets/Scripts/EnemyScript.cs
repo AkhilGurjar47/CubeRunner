@@ -39,8 +39,7 @@ public class EnemyScript : MonoBehaviour
             Timer += Time.deltaTime;
             if (Timer > 2)
             {
-                GameObject bullet = Instantiate(enemyBullet, enemyBulletSpawnPoint.position, Quaternion.identity);
-                bullet.GetComponent<Rigidbody>().velocity = -enemyBulletSpawnPoint.forward * 20;
+                Shoot();
                 Timer = 0;
             }
         }
@@ -69,5 +68,14 @@ public class EnemyScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Shoot()
+    {
+        GameObject bullet = Instantiate(enemyBullet, enemyBulletSpawnPoint.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().velocity = -enemyBulletSpawnPoint.forward * 20;
+    }
+    private void OnDestroy()
+    {
+        EnemyManager.Instance.EnemyGroupCheck();
     }
 }

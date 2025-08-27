@@ -44,14 +44,6 @@ public class PlayerScript : MonoBehaviour
         {
             transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.B))
-        {
-            force = 20000f;
-        }
-        else
-        {
-            force = 1000f;
-        }
         if (Input.GetKeyDown(KeyCode.S) && stopLine && bulletText.bullet != 0)
         {
             bulletText.bullet--;
@@ -66,6 +58,10 @@ public class PlayerScript : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate()
     {
