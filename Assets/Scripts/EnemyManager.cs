@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager Instance {  get; private set; } 
     public List<Transform> enemyGroupTransform = new List<Transform>();
     public List<int> enemyCount = new List<int>();
+    private int finishCount;
     private int finish;
 
     private void Awake()
@@ -27,11 +28,13 @@ public class EnemyManager : MonoBehaviour
     public void EnemyGroupCheck()
     {
         finish++;
-        for(int i = 0; i< enemyCount.Count;i++)
+        while (finishCount < enemyCount.Count)
         {
-            if(enemyCount[i] == finish)
+            if (enemyCount[finishCount] == finish)
             {
                 finish = 0;
+                finishCount++;
+                Debug.Log("Perform task");
             }
             else
             {
