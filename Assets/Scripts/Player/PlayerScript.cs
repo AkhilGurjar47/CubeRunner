@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
         {
             Instance = this;
         }
-        Application.targetFrameRate = 20;
+        //Application.targetFrameRate = 20;
         playerCollison = GetComponent<PlayerCollison>();
     }
     void Start()
@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
         if(currentHealth <= 0)
         {
             playerCollison.GameOver();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     private void FixedUpdate()

@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log(enemyGroupTransform.Count);
         for (int i = 0; i < enemyGroupTransform.Count; i++)
         {
             enemyCount.Add(enemyGroupTransform[i].childCount);

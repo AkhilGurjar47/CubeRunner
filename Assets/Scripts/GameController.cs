@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(true);
         scoreText.SetActive(false);
         audioSouceGameOver.Play();
+        Time.timeScale = 0f;
     }
     public void Restart()
     {
