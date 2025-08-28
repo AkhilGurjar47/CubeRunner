@@ -66,6 +66,7 @@ public class EnemyScript : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0)
         {
+            EnemyManager.Instance.EnemyGroupCheck();
             Destroy(gameObject);
         }
     }
@@ -73,9 +74,5 @@ public class EnemyScript : MonoBehaviour
     {
         GameObject bullet = Instantiate(enemyBullet, enemyBulletSpawnPoint.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().velocity = -enemyBulletSpawnPoint.forward * 20;
-    }
-    private void OnDestroy()
-    {
-        EnemyManager.Instance.EnemyGroupCheck();
     }
 }

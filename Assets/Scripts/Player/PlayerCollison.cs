@@ -10,7 +10,6 @@ public class PlayerCollison : MonoBehaviour
     public BulletText bulletText;
     public GameController gameController;
     public AudioSource audioSource;
-    public AudioSource audioSouceGameOver;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Collectables")
@@ -45,7 +44,11 @@ public class PlayerCollison : MonoBehaviour
         { 
             playerScript.enabled = false;
             gameController.GameOver();
-            audioSouceGameOver.Play();
+            //audioSouceGameOver.Play();
         }
+    }
+    public void GameOver()
+    {
+        gameController.GameOver();
     }
 }

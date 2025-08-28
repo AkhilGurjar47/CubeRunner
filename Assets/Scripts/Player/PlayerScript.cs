@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    private PlayerCollison playerCollison;
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +26,7 @@ public class PlayerScript : MonoBehaviour
             Instance = this;
         }
         Application.targetFrameRate = 20;
+        playerCollison = GetComponent<PlayerCollison>();
     }
     void Start()
     {
@@ -61,6 +63,7 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0)
         {
+            playerCollison.GameOver();
             Destroy(gameObject);
         }
     }

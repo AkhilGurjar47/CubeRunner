@@ -8,6 +8,12 @@ public class GameController : MonoBehaviour
     public GameObject TapToStart;
     public GameObject scoreText;
     public GameObject bulletText;
+    public AudioSource audioSouceGameOver;
+
+    private void Awake()
+    {
+        audioSouceGameOver = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         gameOverPanel.SetActive(false);
@@ -26,6 +32,7 @@ public class GameController : MonoBehaviour
     { 
         gameOverPanel.SetActive(true);
         scoreText.SetActive(false);
+        audioSouceGameOver.Play();
     }
     public void Restart()
     {
