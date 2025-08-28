@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance {  get; private set; } 
     public List<Transform> enemyGroupTransform = new List<Transform>();
+    public List<Transform> interactableTransform = new List<Transform>();
     public List<int> enemyCount = new List<int>();
     private int finishCount;
     private int finish;
@@ -33,8 +34,9 @@ public class EnemyManager : MonoBehaviour
             if (enemyCount[finishCount] == finish)
             {
                 finish = 0;
+                interactableTransform[finishCount].GetComponent<DoorInteractable>().ToggleDoor();
+                PlayerScript.Instance.EnemyIsDestroyed();
                 finishCount++;
-                Debug.Log("Perform task");
             }
             else
             {

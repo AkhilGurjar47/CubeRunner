@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
         {
             Instance = this;
         }
+        Application.targetFrameRate = 20;
     }
     void Start()
     {
