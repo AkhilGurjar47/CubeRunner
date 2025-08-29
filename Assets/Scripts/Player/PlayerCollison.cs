@@ -21,7 +21,8 @@ public class PlayerCollison : MonoBehaviour
             }
             if(other.gameObject.GetComponent<BulletCollectable>() != null)
             {
-                bulletText.AddBullet();
+                int numberOfBullet = other.gameObject.GetComponent<BulletCollectable>().GetBullet();
+                bulletText.AddBullet(numberOfBullet);
                 Destroy(other.gameObject);
                 audioSource.Play();
             }
@@ -36,6 +37,11 @@ public class PlayerCollison : MonoBehaviour
         {
             playerScript.Finish();
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.GetComponent<FinishLine>() != null)
+        {
+            Debug.Log("Win");
+            playerScript.Finish();
         }
     }
     private void OnCollisionEnter(Collision collision)

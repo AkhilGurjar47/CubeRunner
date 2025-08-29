@@ -18,8 +18,8 @@ public class BulletText : MonoBehaviour
     {
         bulletText.text = bullet.ToString();
     }
-    public void AddBullet()
+    public void AddBullet(int numberOfBullet)
     {
-        bullet+=10;
+        bullet += numberOfBullet;
     }
 }
