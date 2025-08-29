@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
         PauseGame();
         TapToStart.SetActive(true);
         scoreText.SetActive(false);
+        bulletText.SetActive(false);
     }
     private void Update()
     {
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
     { 
         gameOverPanel.SetActive(true);
         scoreText.SetActive(false);
+        bulletText.SetActive(false);
         audioSouceGameOver.Play();
         Time.timeScale = 0f;
     }
@@ -53,5 +55,6 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1f;
         TapToStart.SetActive(false);
         scoreText.SetActive(true);
+        bulletText.SetActive(true);
     }
 }
