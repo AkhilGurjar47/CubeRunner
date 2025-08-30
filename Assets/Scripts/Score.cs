@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     public Text scoreText;
     public Text finalScore;
-    int MyScore=0;
+    public int MyScore=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +23,14 @@ public class Score : MonoBehaviour
     public void AddScore(int score)
     {
         MyScore = MyScore+score;
+    }
+    public void SavePlayer()
+    {
+        SaveSystem.SaveData(this);
+    }
+    public void LoadPlayer()
+    {
+        GameData gameData = SaveSystem.LoadData();
+        MyScore = gameData.coin;
     }
 }
