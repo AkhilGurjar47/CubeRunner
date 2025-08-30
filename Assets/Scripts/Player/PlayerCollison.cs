@@ -41,6 +41,8 @@ public class PlayerCollison : MonoBehaviour
         if (other.gameObject.GetComponent<FinishLine>() != null)
         {
             Debug.Log("Win");
+            Debug.Log("Win and Apply the gameobject as a reference ");
+            playerScript.Finish();
             playerScript.Finish();
         }
     }

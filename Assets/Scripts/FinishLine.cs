@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private ParticleSystem particle1;
+    [SerializeField] private ParticleSystem particle2;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        particle1.Stop();
+        particle2.Stop();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.GetComponent<PlayerScript>() != null)
+        {
+            particle1.Play();
+            particle2.Play();
+        }
     }
 }
